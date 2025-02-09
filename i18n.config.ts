@@ -43,6 +43,7 @@ export default defineI18nConfig(() => ({
         selectDir: 'Select folder',
         toHome: 'Back to home',
         terminate: 'Terminate',
+        login: 'Login to',
         buyMeCoffee: 'Buy me coffee'
       },
       hint: {
@@ -109,6 +110,7 @@ export default defineI18nConfig(() => ({
         selectDir: '选择目录',
         toHome: '回首页',
         terminate: '终止',
+        login: '登录',
         buyMeCoffee: '请我喝咖啡'
       },
       hint: {

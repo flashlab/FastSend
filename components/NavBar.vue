@@ -14,6 +14,27 @@ const availableLocales = ref([
   { name: '中文', code: 'zh', icon: 'icon-park-outline:chinese' }
 ])
 
+// 登录接口
+interface User {
+  id: number
+  username: string
+  name: string
+  avatar: string
+  level: number
+  active: boolean
+}
+const { loggedIn, user, clear } = useUserSession()
+const typedUser = computed(() => user.value as User | null)
+const levelClass = computed(() => {
+  switch (typedUser.value?.level) {
+    case 1: return 'text-green-500'
+    case 2: return 'text-blue-500'
+    case 3: return 'text-yellow-500'
+    case 4: return 'text-red-500'
+    default: return 'text-gray-500'
+  }
+})
+
 // 暗色模式切换
 function switchColorMode() {
   if (colorMode.preference === 'light') {
@@ -171,6 +192,12 @@ onMounted(() => {
               ><Icon name="material-symbols:check-rounded"
             /></Button>
           </InputGroup>
+          <!-- 登录LINUXDO -->
+          <a href="/api/auth/linuxdo" class="flex w-full">
+            <Button rounded severity="contrast" class="w-full tracking-wider block"
+              ><IconLinuxDo class="size-[1.125rem] mr-2" />{{ $t('btn.login') }} LinuxDo</Button
+            ></a
+          >
         </div>
 
         <Divider />

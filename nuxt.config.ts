@@ -2,6 +2,11 @@
 import path from 'path'
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  server:  { allowedHosts: true },
+  devServer: {
+    port: 80,
+    allowedHosts: true
+  },
   css: ['~/assets/main.css'],
 
   modules: [
@@ -11,7 +16,8 @@ export default defineNuxtConfig({
     '@primevue/nuxt-module',
     '@nuxtjs/color-mode',
     '@nuxtjs/tailwindcss',
-    'nuxt-icon'
+    'nuxt-icon',
+    'nuxt-auth-utils'
   ],
 
   app: {
@@ -115,6 +121,16 @@ export default defineNuxtConfig({
     experimental: {
       websocket: true
     }
+  },
+
+  runtimeConfig: {
+    oauth: {
+      linuxdo: {
+        clientId: '',
+        clientSecret: '',
+        domain: '',
+      },
+    },
   },
 
   compatibilityDate: '2024-08-09'
